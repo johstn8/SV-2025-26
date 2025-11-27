@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Team Johann</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='m64 48h-12c0-5.1-1.4-9.44-3.91-12.76.92-.16 1.89-.24 2.91-.24 8.02 0 13 4.98 13 13ZM13 32c4.32 0 7-2.68 7-7s-2.68-7-7-7-7 2.68-7 7 2.68 7 7 7Zm38 0c4.32 0 7-2.68 7-7s-2.68-7-7-7-7 2.68-7 7 2.68 7 7 7Zm-19-4c4.94 0 8-3.06 8-8s-3.06-8-8-8-8 3.06-8 8 3.06 8 8 8Zm0 4c-9.87 0-16 6.13-16 16h32c0-9.87-6.13-16-16-16ZM0 48h12c0-5.1 1.4-9.44 3.91-12.76-.92-.16-1.89-.24-2.91-.24-8.02 0-13 4.98-13 13Z' fill='%23C94079'/%3E%3C/svg%3E" />
+  <meta name="description" content="Team Johann – Unsere Ziele für das Hans‑Carossa‑Gymnasium: Feste, LK‑Infomarkt & Materialpool, Transparenz in der Schulkonferenz, Hygieneartikel, Sportturniere, Mitmachen!" />
+  <style>
+  :root{
+    --accent: rgb(201, 64, 121);
+    --text: #1f2937;
+    --muted: #6b7280;
+    --bg: #ffffff;
+    --bg-alt: #f8fafc;
+    --card: #ffffff;
+    --border: #e5e7eb;
+    --radius: 14px;
+    --shadow: 0 10px 20px rgba(0,0,0,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; color:var(--text); background:var(--bg)}
+  a{color:var(--accent); text-decoration: none}
+  img{max-width:100%; display:block}
+  .container{width:min(1200px, 92%); margin-inline:auto}
+
+  header{
+    position:sticky; top:0; z-index:20;
+    backdrop-filter:saturate(180%) blur(12px);
+    background:rgba(255,255,255,.92);
+    border-bottom:1px solid var(--border);
+    padding-top:max(env(safe-area-inset-top), 0px);
+  }
+  nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0}
+  .brand{display:flex; align-items:center; gap:12px}
+  .brand-mark{height:46px; width:46px; border-radius:14px; background:#fff; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; padding:6px; box-shadow:var(--shadow)}
+  .brand-mark svg{height:100%; width:100%}
+  .brand-copy span{display:block; font-size:clamp(20px, 4vw, 30px); font-weight:700; line-height:1}
+  .brand-copy small{display:block; margin-top:4px; font-size:.85rem; color:var(--muted); letter-spacing:.02em}
+
+  .navlinks{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-left:auto}
+  .navlinks a{padding:10px 12px; border-radius:12px; line-height:1.1; font-size:.95rem; transition:background .2s ease, color .2s ease}
+  .navlinks a:hover{background:var(--bg-alt)}
+
+  /* Mobile nav toggle */
+  .nav-toggle{display:none; margin-left:auto; border:1px solid var(--border); background:#fff; border-radius:12px; padding:10px 14px; cursor:pointer; font-size:.95rem; font-weight:600; color:var(--text)}
+  .nav-toggle:focus-visible{outline:2px solid var(--accent)}
+
+  .hero{padding:56px 0 36px; background:linear-gradient(180deg, rgba(201,64,121,.06), transparent)}
+  .hero-grid{display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 480px); gap:40px; align-items:center}
+  .hero-text{max-width:620px}
+  .hero-media{position:relative; border-radius:20px; overflow:hidden; box-shadow:var(--shadow); border:1px solid rgba(255,255,255,.6)}
+  .hero-media::after{content:""; position:absolute; inset:0; background:linear-gradient(135deg, rgba(201,64,121,.18), transparent); pointer-events:none}
+  .hero-media img{width:100%; height:100%; object-fit:cover; display:block}
+  .badge{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border:1px solid var(--border); border-radius:999px; background:#fff}
+  .badge i{height:8px; width:8px; background:var(--accent); border-radius:999px}
+  h1{font-size:clamp(28px, 4vw, 46px); line-height:1.08; margin:14px 0}
+  .lead{font-size:clamp(16px, 2.2vw, 20px); color:var(--muted); max-width:60ch}
+  .cta{margin-top:20px; display:flex; gap:12px; flex-wrap:wrap}
+
+  /* Buttons: zentrierter Inhalt */
+  .btn{border:none; cursor:pointer; padding:14px 18px; border-radius:12px; font-weight:600; box-shadow:var(--shadow); min-height:44px; display:inline-flex; align-items:center; justify-content:center; text-align:center}
+  .btn:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+  .btn-accent{background:var(--accent); color:white; transition:background .2s ease, transform .2s ease}
+  .btn-accent:hover{background:#f06292; color:white}
+  .btn-accent:active{transform:translateY(1px)}
+  .btn-ghost{background:#fff; color:var(--text); border:1px solid var(--border)}
+
+  .strip{padding:26px 0; background:var(--bg)}
+  .grid{display:grid; gap:18px}
+  .grid.cols-3{grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))}
+  .goals-grid{grid-template-columns:repeat(3, minmax(0, 1fr))}
+  .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+  .card h3{margin:0 0 8px; font-size:1.1rem}
+  .card p{margin:0; color:var(--muted); font-size:.98rem; line-height:1.45}
+
+  .goal-card{cursor:pointer; text-align:left; display:flex; flex-direction:column; gap:12px; transition:transform .2s ease, box-shadow .2s ease; font:inherit; color:inherit}
+  .goal-card:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+  .goal-card:hover{box-shadow:0 14px 26px rgba(0,0,0,.12); transform:translateY(-2px)}
+  .goal-card h3{font-size:1.1rem; margin:0}
+  .goal-card p{font-size:.98rem}
+
+  .goal-card__header{display:flex; align-items:center; gap:12px}
+  .goal-card__icon{flex:0 0 auto; width:46px; height:46px; border-radius:14px; background:var(--bg-alt); display:flex; align-items:center; justify-content:center; box-shadow:inset 0 0 0 1px var(--border); color:var(--accent)}
+  .goal-card__icon img{width:26px; height:26px; display:block}
+
+  .goal-overlay{position:fixed; inset:0; display:flex; align-items:center; justify-content:center; padding:20px; background:rgba(15,23,42,.55); z-index:50}
+  .goal-overlay[hidden]{display:none}
+  .goal-overlay__card{position:relative; background:#fff; border-radius:20px; max-width:min(720px, 94vw); max-height:min(90vh, 780px); overflow-y:auto; padding:28px; box-shadow:0 24px 48px rgba(15,23,42,.22)}
+  .goal-overlay__close{position:absolute; top:16px; right:16px; border:none; background:rgba(15,23,42,.08); border-radius:999px; width:38px; height:38px; cursor:pointer; font-size:22px; line-height:1; display:flex; align-items:center; justify-content:center}
+  .goal-overlay__close:hover{background:rgba(15,23,42,.16)}
+  .goal-overlay__close:focus-visible{outline:2px solid var(--accent)}
+  .goal-overlay__body h2{margin-top:0}
+  .goal-overlay__body .grid{margin-top:20px}
+  .goal-detail-grid{grid-template-columns:repeat(3, minmax(0, 1fr))}
+
+  .team-card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow)}
+  .team-card p{margin:0; font-size:1rem}
+  .team-showcase{display:grid; gap:20px; grid-template-columns:minmax(0, 1fr); align-items:start}
+  .team-list{margin:16px 0 0; padding-left:20px; color:var(--muted)}
+  .team-list li+li{margin-top:8px}
+
+  .section{padding:42px 0; scroll-margin-top:80px}
+  .section h2{font-size:clamp(22px, 3vw, 32px); margin:0 0 14px}
+  .section p.desc{color:var(--muted); margin:0 0 22px}
+
+  .kpis{display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:14px}
+  .kpi{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:14px}
+  .kpi b{font-size:28px; color:var(--accent)}
+
+  .gallery{display:grid; grid-template-columns: repeat(4, 1fr); gap:12px}
+  .photo{border-radius:12px; overflow:hidden; border:1px solid var(--border)}
+
+  .faq details{border:1px solid var(--border); border-radius:12px; padding:12px 14px; background:#fff}
+  .faq details+details{margin-top:10px}
+  .faq summary{cursor:pointer; font-weight:600}
+
+  footer{padding:32px 0; border-top:1px solid var(--border); background:var(--bg-alt); color:var(--muted)}
+
+  /* iPad / Tablet */
+  @media (max-width: 1024px){
+    nav{gap:10px}
+    .hero{padding:48px 0 24px}
+    .hero-grid{grid-template-columns: minmax(0, 1fr) minmax(0, 400px)}
+  }
+
+  /* Mobile large */
+  @media (max-width: 760px){
+    nav{flex-wrap:wrap}
+    .brand{width:100%; justify-content:space-between}
+    .nav-toggle{display:inline-flex; align-items:center; gap:6px}
+    .navlinks{display:none; width:100%; flex-direction:column; align-items:flex-start; padding:12px; border:1px solid var(--border); border-radius:16px; background:rgba(255,255,255,.96); box-shadow:var(--shadow); margin-left:0}
+    .navlinks.is-open{display:flex}
+    .navlinks a{width:100%; padding:12px 6px}
+    .container{width:min(100%, 90%)}
+    .hero{padding:40px 0 22px}
+    .hero-grid{grid-template-columns:1fr}
+    .hero-media{display:none}
+    .team-showcase{grid-template-columns:1fr}
+    .gallery{grid-template-columns: repeat(2, 1fr)}
+  }
+
+  @media (max-width: 900px){
+    .goals-grid{grid-template-columns:repeat(2, minmax(0, 1fr))}
+    .goal-detail-grid{grid-template-columns:repeat(2, minmax(0, 1fr))}
+  }
+
+  @media (max-width: 600px){
+    .goals-grid{grid-template-columns:1fr}
+    .goal-detail-grid{grid-template-columns:1fr}
+  }
+
+  @media (max-width: 420px){
+    .brand-copy span{font-size:clamp(20px, 8vw, 28px)}
+    .brand-mark{height:42px; width:42px; font-size:1rem}
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-hidden="true" focusable="false">
+              <path d="m64,48h-12c0-5.1-1.4-9.44-3.91-12.76.92-.16,1.89-.24,2.91-.24,8.02,0,13,4.98,13,13ZM13,32c4.32,0,7-2.68,7-7s-2.68-7-7-7-7,2.68-7,7,2.68,7,7,7Zm38,0c4.32,0,7-2.68,7-7s-2.68-7-7-7-7,2.68-7,7,2.68,7,7,7Zm-19-4c4.94,0,8-3.06,8-8s-3.06-8-8-8-8,3.06-8,8,3.06,8,8,8Zm0,4c-9.87,0-16,6.13-16,16h32c0-9.87-6.13-16-16-16ZM0,48h12c0-5.1,1.4-9.44,3.91-12.76-.92-.16-1.89-.24-2.91-.24-8.02,0-13,4.98-13,13Z" fill="#C94079" />
+            </svg>
+          </div>
+          <div class="brand-copy">
+            <span>Team Johann</span>
+            <small>Wahl des SV-Teams 2025/26</small>
+          </div>
+          <button class="nav-toggle" aria-controls="navlinks" aria-expanded="false" aria-label="Menü öffnen">☰ Menü</button>
+        </div>
+        <div id="navlinks" class="navlinks">
+          <a href="#ziele" data-goal="feste">Events &amp; Partys</a>
+          <a href="#ziele" data-goal="sport">Sportturniere</a>
+          <a href="#ziele" data-goal="lk">LK Börse</a>
+          <a href="#ziele" data-goal="konferenz">Schulkonferenz</a>
+          <a href="#ziele" data-goal="hygiene">Hygieneartikel</a>
+          <a href="#mitmachen" class="btn btn-accent" style="padding:10px 18px">Mitmachen</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <span class="badge"><i></i> Wahl des SV-Teams</span>
+          <h1>Gemeinsam HCG gestalten – <span style="color:var(--accent)">Team Johann</span></h1>
+          <p class="lead">Liebe Mitschülerinnen und Mitschüler, unsere Schule hat enormes Potenzial. Gemeinsam mit euch wollen wir Feste stärken, euch Orientierung bei der LK‑Wahl geben, Transparenz in der Schulkonferenz schaffen, Hygieneartikel bereitstellen und Sportturniere fortführen. Eure Ideen zählen!</p>
+          <div class="cta">
+            <a class="btn btn-accent" href="https://forms.office.com/e/9GbTvHWwuf" target="_blank" rel="noopener">Umfrage ausfüllen</a>
+          </div>
+        </div>
+        <figure class="hero-media" aria-label="Hans-Carossa-Gymnasium">
+          <img src="https://lh3.googleusercontent.com/p/AF1QipOlqNLvZDF85o7Tk3ZG7xXXKa6mjpv2lX-87o50=s1200" alt="Das Hans-Carossa-Gymnasium in Berlin" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="ziele">
+      <div class="container">
+        <h2>Unsere wichtigsten Ziele</h2>
+        <div class="grid goals-grid">
+          <button class="card goal-card" type="button" data-goal="feste">
+            <div class="goal-card__header">
+              <span class="goal-card__icon" aria-hidden="true">
+                <img src="media/partys-und-events.png" alt="" />
+              </span>
+              <h3>Events &amp; Partys</h3>
+            </div>
+            <p>Gemeinsam feiern und zusätzliche Events auf die Beine stellen.</p>
+          </button>
+          <button class="card goal-card" type="button" data-goal="lk">
+            <div class="goal-card__header">
+              <span class="goal-card__icon" aria-hidden="true">
+                <img src="media/lk-boerse.png" alt="" />
+              </span>
+              <h3>Erleichtern der LK‑Wahl</h3>
+            </div>
+            <p>Mehr Überblick durch einen LK‑Infomarkt und Materialpool.</p>
+          </button>
+          <button class="card goal-card" type="button" data-goal="konferenz">
+            <div class="goal-card__header">
+              <span class="goal-card__icon" aria-hidden="true">
+                <img src="media/schulkonferenz.png" alt="" />
+              </span>
+              <h3>Transparente SV-Arbeit</h3>
+            </div>
+            <p>Regelmäßige Updates per Teams-Post für euch.</p>
+          </button>
+          <button class="card goal-card" type="button" data-goal="hygiene">
+            <div class="goal-card__header">
+              <span class="goal-card__icon" aria-hidden="true">
+                <img src="media/hygieneartikel.png" alt="" />
+              </span>
+              <h3>Kostenlose Hygieneartikel</h3>
+            </div>
+            <p>Verlässliche Versorgung auf den Mädchentoiletten.</p>
+          </button>
+          <button class="card goal-card" type="button" data-goal="sport">
+            <div class="goal-card__header">
+              <span class="goal-card__icon" aria-hidden="true">
+                <img src="media/sportturniere.png" alt="" />
+              </span>
+              <h3>Sportturniere weiterführen</h3>
+            </div>
+            <p>Sporturniere für alle Klassenstufen weiterführen.</p>
+          </button>
+          <button class="card goal-card" type="button" data-goal="mitsprache">
+            <div class="goal-card__header">
+              <span class="goal-card__icon" aria-hidden="true">
+                <img src="media/mitsprache.png" alt="" />
+              </span>
+              <h3>Eure Mitsprache stärken</h3>
+            </div>
+            <p>Schnelle Umfragen und offene Ohren für eure Ideen.</p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="mitmachen">
+      <div class="container">
+        <h2>Macht mit!</h2>
+        <p class="desc">Eure Meinung zählt. Sagt uns, was euch wichtig ist.</p>
+        <div class="grid cols-3">
+          <article class="card">
+            <h3>Kurze Umfrage</h3>
+            <p>Teilt eure Prioritäten. <br />
+            <a href="https://forms.office.com/e/9GbTvHWwuf" aria-label="Umfrangelink" target="_blank" rel="noopener">👉 Zur Umfrage (Forms)</a></p>
+          </article>
+          <article class="card">
+            <h3>Schreibt uns auf Teams</h3>
+            <p>PN an <b>Johann Stein</b>, <b>Jasmin Winsche</b>, <b>Lotta Schuster</b> oder <b>Julian Rebafka</b> – wir antworten schnell.</p>
+          </article>
+          <article class="card">
+            <h3>Im Gang ansprechen</h3>
+            <p>Ihr seht uns? Sprecht uns einfach an – wir nehmen es direkt mit.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <template data-goal-template="feste">
+    <h2>Events &amp; Partys</h2>
+    <div class="grid goal-detail-grid">
+      <article class="card">
+        <h3>Mehr Events für alle</h3>
+        <p>Wir wollen mit dem Stadtteilzentrum Kladow (YOLO) und engagierten Klassensprechern zusammenarbeiten, um zusätzliche Partys vor allem für die Mittelstufe auf die Beine zu stellen.</p>
+      </article>
+      <article class="card">
+        <h3>Jubiläumsfest</h3>
+        <p>Beim Jubiläumsfest nächsten Sommer wollen wir eure Ideen mit umsetzen, damit es wirklich unser Fest wird.</p>
+      </article>
+      <article class="card">
+        <h3>YOLO</h3>
+        <p>Wir wollen mit dem Stadtteilzentrum Kladow zusammen auch dieses Jahr wieder YOLO und ggf. auch noch ein zweites Fest, vor allem für die Mittelstufe, organisieren.</p>
+      </article>
+    </div>
+  </template>
+
+  <template data-goal-template="lk">
+    <h2>LK Börse</h2>
+    <p>Mit einer erweiterten LK-Börse möchten wir Entscheidungen zur Kurswahl leichter machen.</p>
+    <div class="grid goal-detail-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+      <article class="card">
+        <h3>LK‑Infomarkt</h3>
+        <p>Austauschmöglichkeiten mit Oberstufenschüler*innen, damit eure Fragen zu Workload, Prüfungen und Lernmaterialien beantwortet werden.</p>
+      </article>
+      <article class="card">
+        <h3>LK‑Materialpool</h3>
+        <p>Wir wollen euch einen Ordner mit Beispielaufgaben und -Klausuren zur Verfügung stellen.</p>
+      </article>
+    </div>
+  </template>
+
+  <template data-goal-template="konferenz">
+    <h2>Schulkonferenz transparent machen</h2>
+    <p>Vier Schülerinnen und Schüler vertreten euch in der Schulkonferenz – und wir möchten ihre Arbeit sichtbar machen.</p>
+    <div class="grid goal-detail-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+      <article class="card">
+        <h3>GSV</h3>
+        <p>Regelmäßige GSVs inklusive Updates der umgesetzten Projekte.</p>
+      </article>
+      <article class="card">
+        <h3>Schulkonferenz</h3>
+        <p>Nach jeder Sitzung wollen wir auf Teams posten, was beschlossen wurde und was die nächsten Schritte sind. Dazu wollen wir natürlich eure Ideen ansprechen und in das Gremium mit einbringen.</p>
+      </article>
+    </div>
+  </template>
+
+  <template data-goal-template="hygiene">
+    <section class="section" id="hygiene">
+      <div class="container">
+        <h2>Kostenlose Hygieneartikel</h2>
+        <div class="kpis" aria-label="Ziele in Zahlen">
+          <div class="kpi"><div>Aktuelle Boxen</div><b>1</b><div><small>(oft leer)</small></div></div>
+          <div class="kpi"><div>Ziel pro Etage</div><b>≥ 1</b><div><small>verlässlich aufgefüllt</small></div></div>
+          <div class="kpi"><div>Monatsbudget</div><b>≈ 40 €</b><div><small>über die Spandauer Jugendjury und den Förderverein</small></div></div>
+        </div>
+        <div class="card" style="margin-top:14px">
+          <p style="margin:0">Wir koordinieren die Aufstellung und verlässliche Auffüllung zusammen mit dem Sozialteam. Meldet euch, wenn etwas fehlt – wir kümmern uns sofort.</p>
+          <p style="margin:0">Wir möchten die Aufstellung und verlässliche Auffüllung gemeinsam mit dem Sozialteam koordinieren. Meldet euch gern, wenn etwas fehlt – das möchten wir schnell zusammen lösen.</p>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <template data-goal-template="sport">
+    <h2>Sportturniere</h2>
+    <p>Sport lebt von Fairness und Spaß. Wir bauen auf erfolgreichen Turnieren auf!</p>
+    <div class="grid goal-detail-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+      <article class="card"><h3>Planung</h3><p>Neben dem Volleyball- und dem Basketball-Turnier wollen wir auch das Fußball-Turnier noch einmal stattfinden lassen.</p></article>
+      <article class="card"><h3>Feedback</h3><p>Nach jedem Turnier fragen wir euch nach Verbesserungswünschen und setzen sie um.</p></article>
+    </div>
+  </template>
+
+  <template data-goal-template="mitsprache">
+    <h2>Mitsprache stärken</h2>
+    <div class="grid goal-detail-grid">
+      <article class="card">
+        <h3>Schnelle Umfragen</h3>
+        <p>Wir holen regelmäßig euer Feedback zu aktuellen Themen ein, bevor Entscheidungen fallen.</p>
+      </article>
+      <article class="card">
+        <h3>Direkte Sprechzeiten</h3>
+        <p>In den Pausen und online auf Teams stehen wir für Gespräche bereit – ohne lange Wege.</p>
+      </article>
+      <article class="card">
+        <h3>Rückmeldung garantiert</h3>
+        <p>Ihr erfahrt transparent, was mit euren Vorschlägen passiert und welche Schritte folgen.</p>
+      </article>
+    </div>
+  </template>
+
+  <div class="goal-overlay" data-goal-overlay hidden aria-hidden="true">
+    <div class="goal-overlay__card" role="dialog" aria-modal="true" aria-labelledby="goal-overlay-title">
+      <button class="goal-overlay__close" type="button" data-overlay-close aria-label="Overlay schließen">×</button>
+      <div class="goal-overlay__body" id="goal-overlay-content"></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex; gap:14px; align-items:center; justify-content:center; flex-wrap:wrap">
+        <p style="margin:0">© <span id="year"></span> Team Johann – Hans‑Carossa‑Gymnasium</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  // Jahr im Footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile Navigation Toggle
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.getElementById('navlinks');
+  if(toggle && links){
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
+  const overlay = document.querySelector('[data-goal-overlay]');
+  const overlayBody = overlay?.querySelector('.goal-overlay__body');
+  const goalTemplates = new Map();
+  let lastTrigger = null;
+
+  document.querySelectorAll('template[data-goal-template]').forEach((template) => {
+    const key = template.dataset.goalTemplate;
+    if(key){
+      goalTemplates.set(key, template);
+    }
+  });
+
+  const openGoal = (goal) => {
+    if(!overlay || !overlayBody){
+      return;
+    }
+    const template = goalTemplates.get(goal);
+    if(!template){
+      return;
+    }
+    overlayBody.innerHTML = '';
+    overlayBody.appendChild(template.content.cloneNode(true));
+    const heading = overlayBody.querySelector('h2');
+    if(heading){
+      heading.id = 'goal-overlay-title';
+    }
+    overlay.removeAttribute('hidden');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.setProperty('overflow', 'hidden');
+    const closeBtn = overlay.querySelector('[data-overlay-close]');
+    closeBtn?.focus();
+  };
+
+  const closeGoal = () => {
+    if(!overlay || !overlayBody){
+      return;
+    }
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.setAttribute('hidden', '');
+    overlayBody.innerHTML = '';
+    document.body.style.removeProperty('overflow');
+    if(lastTrigger && typeof lastTrigger.focus === 'function'){
+      lastTrigger.focus();
+    }
+    lastTrigger = null;
+  };
+
+  const goalTriggers = document.querySelectorAll('[data-goal]');
+  goalTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', (event) => {
+      event.preventDefault();
+      if(links && links.classList.contains('is-open')){
+        links.classList.remove('is-open');
+        toggle?.setAttribute('aria-expanded', 'false');
+      }
+      lastTrigger = trigger;
+      openGoal(trigger.dataset.goal);
+    });
+  });
+
+  if(overlay){
+    overlay.addEventListener('click', (event) => {
+      if(event.target === overlay || event.target.hasAttribute('data-overlay-close')){
+        closeGoal();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if(event.key === 'Escape' && overlay && overlay.getAttribute('aria-hidden') === 'false'){
+      closeGoal();
+    }
+  });
+</script>
+</body>
+</html>
