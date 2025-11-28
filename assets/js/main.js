@@ -86,7 +86,10 @@ if(eventsHost && scroller && trackPast && trackFuture && todayMarker){
   trackFuture.style.width = `${100 - percent}%`;
   trackFuture.style.left = `${percent}%`;
   todayMarker.style.left = `${percent}%`;
-  todayMarker.querySelector('span').textContent = 'Heute';
+  const todayLabel = todayMarker.querySelector('.today-label');
+  if(todayLabel){
+    todayLabel.textContent = 'Heute';
+  }
 }
 
 // Goal overlay handling
