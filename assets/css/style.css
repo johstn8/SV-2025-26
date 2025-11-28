@@ -47,7 +47,7 @@ nav{display:flex; align-items:center; justify-content:space-between; gap:16px; p
 .nav-toggle:focus-visible{outline:2px solid var(--accent)}
 
 .hero{padding:72px 0 46px; background:linear-gradient(180deg, rgba(201,64,121,.07), transparent)}
-.hero-grid{display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 460px); gap:40px; align-items:center}
+.hero-grid{display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 520px); gap:40px; align-items:center}
 .hero-text{max-width:640px}
 .hero-media{position:relative; border-radius:20px; overflow:hidden; box-shadow:var(--shadow-strong); border:1px solid rgba(255,255,255,.7)}
 .hero-media::after{content:""; position:absolute; inset:0; background:linear-gradient(135deg, rgba(201,64,121,.18), transparent); pointer-events:none}
@@ -85,7 +85,7 @@ h1{font-size:clamp(30px, 4vw, 48px); line-height:1.08; margin:14px 0}
 .news-card .news-date{font-weight:700; color:var(--accent)}
 
 .timeline-shell{overflow:hidden; padding-bottom:6px}
-.timeline-scroller{overflow-x:auto; display:block; padding:6px; scroll-behavior:smooth; -webkit-overflow-scrolling:touch; scrollbar-width:none}
+.timeline-scroller{overflow-x:auto; display:block; padding:16px 6px 6px; scroll-behavior:smooth; -webkit-overflow-scrolling:touch; scrollbar-width:none}
 .timeline-scroller::-webkit-scrollbar{display:none}
 .timeline-body{display:flex; flex-direction:column; gap:10px; min-width:720px; width:max-content}
 .timeline-track{position:relative; height:26px; margin:18px 0 10px; min-width:720px}
@@ -149,7 +149,7 @@ textarea{min-height:140px; resize:vertical}
 @media (max-width: 1024px){
   nav{gap:10px}
   .hero{padding:56px 0 32px}
-  .hero-grid{grid-template-columns: minmax(0, 1fr) minmax(0, 380px)}
+  .hero-grid{grid-template-columns: minmax(0, 1fr) minmax(0, 420px)}
 }
 
 @media (max-width: 760px){
@@ -171,4 +171,8 @@ textarea{min-height:140px; resize:vertical}
   .brand-copy span{font-size:clamp(20px, 8vw, 28px)}
   .brand-mark{height:42px; width:42px; font-size:1rem}
   .today-marker{font-size:.9rem}
+}
+
+#team .hero-text .lead{
+  font-size:1rem;
 }
