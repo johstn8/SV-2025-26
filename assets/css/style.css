@@ -12,8 +12,8 @@
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; color:var(--text); background:var(--bg)}
+html{scroll-behavior:smooth; overflow-x:hidden}
+body{margin:0;font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; color:var(--text); background:var(--bg); overflow-x:hidden}
 a{color:var(--accent); text-decoration: none}
 a:hover{text-decoration:underline}
 img{max-width:100%; display:block}
@@ -73,10 +73,15 @@ h1{font-size:clamp(30px, 4vw, 48px); line-height:1.08; margin:14px 0}
 .card p{margin:0; color:var(--muted); font-size:1rem; line-height:1.5}
 
 .news-grid{grid-template-columns:repeat(auto-fit, minmax(260px, 1fr))}
+.news-card{display:block; height:100%; color:inherit; text-decoration:none; transition:transform .2s ease, box-shadow .2s ease}
+.news-card:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+.news-card:hover{transform:translateY(-2px); box-shadow:var(--shadow-strong); text-decoration:none}
 .news-card .news-meta{display:flex; gap:8px; align-items:center; color:var(--muted); font-size:.95rem}
 .news-card .news-date{font-weight:700; color:var(--accent)}
 
-.timeline-wrapper{position:relative; display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:12px}
+.timeline-shell{overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:10px}
+.timeline-wrapper{position:relative; display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:12px; min-width:min(1100px, 100vw)}
+.timeline-body{display:flex; flex-direction:column; gap:10px; min-width:720px}
 .timeline-track{position:relative; height:18px; margin:18px 0 12px; grid-column:1 / -1}
 .timeline-track .track-past,.timeline-track .track-future{position:absolute; top:50%; transform:translateY(-50%); height:0; border-bottom-width:3px; border-bottom-style:solid; border-radius:999px}
 .track-past{border-color:var(--muted); border-style:dashed; left:0}
@@ -85,7 +90,7 @@ h1{font-size:clamp(30px, 4vw, 48px); line-height:1.08; margin:14px 0}
 .today-marker .dot{width:14px; height:14px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px rgba(201,64,121,.18)}
 .timeline-events{display:flex; gap:14px; align-items:stretch; padding-bottom:6px}
 
-.timeline-scroller{overflow-x:auto; display:flex; gap:14px; padding:6px; scroll-behavior:smooth}
+.timeline-scroller{overflow-x:auto; display:flex; gap:14px; padding:6px; scroll-behavior:smooth; -webkit-overflow-scrolling:touch}
 .timeline-card{min-width:240px; max-width:260px; border:1px solid var(--border); border-radius:14px; padding:14px; background:#fff; box-shadow:var(--shadow); position:relative}
 .timeline-card .timeline-date{font-weight:700; color:var(--accent); margin:0 0 4px}
 .timeline-card .timeline-title{margin:0 0 6px; font-size:1.05rem}
