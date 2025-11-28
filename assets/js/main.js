@@ -28,7 +28,7 @@ if(yearEl){
 // Timeline data: maintain events here
 const timelineEvents = [
   { date: '2025-09-15', title: '1. GSV', category: 'GSV', status: 'past', description: 'Auftakt der Gesamtschülervertretung, Sammeln eurer Themen für das Schuljahr.' },
-  { date: '2025-11-10', title: 'Start: Kostenlose Hygieneartikel', category: 'Hygiene', status: 'past', description: 'Seit dem 10. November stehen auf den Mädchentoiletten kostenlose Hygieneartikel bereit. Wir starten mit Testboxen, um zu sehen, was ihr wirklich braucht.' },
+  { date: '2025-11-10', title: 'Start: Kostenlose Hygieneartikel', category: 'Hygiene', status: 'past', description: 'Seit dem 10. November stehen auf der Mädchentoilette im Erdgeschoss kostenlose Hygieneartikel für Notfälle für euch bereit.' },
   { date: '2025-11-14', title: 'YOLO-Party', category: 'Event', status: 'past', description: 'Gemeinsam mit dem Stadtteilzentrum Kladow – großer Dank an alle Helferinnen und Helfer!' },
   { date: '2025-11-20', title: 'Video über die Gremien an unserer Schule', category: 'Transparenz', status: 'past', description: 'Erklärvideo zu GSV, Schulkonferenz und weiteren Gremien, damit alle wissen, wer wofür zuständig ist.' },
   { date: '2025-12-17', title: '2. GSV', category: 'GSV', status: 'future', description: 'Rückblick auf erste Maßnahmen und Planung weiterer Projekte.' },
