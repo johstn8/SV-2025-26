@@ -71,7 +71,7 @@ if(eventsHost && scroller && trackPast && trackFuture && todayMarker){
   const futureDates = parsedEvents.filter((e) => e.status !== 'past').map((e) => e.dateObj);
 
   let todayReference = now;
-  const anchorPast = parsedEvents.find((event) => event.title.toLowerCase().includes('yolo-party'));
+  const anchorPast = parsedEvents.find((event) => event.title.toLowerCase().includes('video über die gremien'));
   const anchorFuture = parsedEvents.find((event) => event.title.toLowerCase().includes('2. gsv'));
 
   if(anchorPast && anchorFuture){
