@@ -28,18 +28,21 @@ if(yearEl){
 // Timeline data: maintain events here
 const timelineEvents = [
   { date: '2025-09-15', title: 'GSV-Sitzung 1', category: 'GSV', status: 'past', description: 'Auftakt der Gesamtschülervertretung, Sammeln eurer Themen für das Schuljahr.' },
-  { date: '2025-09-25', title: 'Transparenz-Post', category: 'Transparenz', status: 'past', description: 'Zusammenfassung der Schulkonferenz-Beschlüsse für alle Klassen.' },
   { date: '2025-10-10', title: 'Hygieneartikel-Pilot', category: 'Hygiene', status: 'past', description: 'Erste Box im Oberstufenflur getestet und mit dem Sozialteam ausgewertet.' },
-  { date: '2025-11-25', title: 'YOLO-Party', category: 'Event', status: 'past', description: 'Gemeinsam mit dem Stadtteilzentrum Kladow – großer Dank an alle Helferinnen und Helfer!' },
-  { date: '2025-12-12', title: 'Winterturnier', category: 'Sport', status: 'past', description: 'Basketball- und Volleyball-Turnier mit Feedbackrunde für faire Regeln.' },
-  { date: '2026-01-15', title: 'LK-Infomarkt', category: 'LK', status: 'future', description: 'Materialpool und Erfahrungsberichte zur Wahl der Leistungskurse.' },
-  { date: '2026-02-05', title: 'GSV-Sitzung 2', category: 'GSV', status: 'future', description: 'Berichte aus den Klassen, Vorbereitung der nächsten Schulkonferenz.' },
+  { date: '2025-11-10', title: 'Start: Kostenlose Hygieneartikel', category: 'Hygiene', status: 'past', description: 'Seit dem 10. November stehen auf den Mädchentoiletten kostenlose Hygieneartikel bereit. Wir starten mit Testboxen, um zu sehen, was ihr wirklich braucht.' },
+  { date: '2025-11-14', title: 'YOLO-Party', category: 'Event', status: 'past', description: 'Gemeinsam mit dem Stadtteilzentrum Kladow – großer Dank an alle Helferinnen und Helfer!' },
+  { date: '2025-11-20', title: 'Video über die Gremien an unserer Schule', category: 'Transparenz', status: 'past', description: 'Erklärvideo zu GSV, Schulkonferenz und weiteren Gremien, damit alle wissen, wer wofür zuständig ist.' },
+  { date: '2025-12-05', title: 'Neue Hygiene-Boxen planen', category: 'Hygiene', status: 'future', description: 'Planung für mehr Boxen und Standorte im Dezember, damit alle Etagen versorgt sind.' },
+  { date: '2025-12-12', title: 'Winterturnier', category: 'Sport', status: 'future', description: 'Basketball- und Volleyball-Turnier mit Feedbackrunde für faire Regeln.' },
+  { date: '2025-12-17', title: '2. GSV-Sitzung', category: 'GSV', status: 'future', description: 'Rückblick auf erste Maßnahmen und Planung weiterer Projekte.' },
+  { date: '2026-01-15', displayDate: 'Januar 2026', title: 'LK-Infomarkt', category: 'LK', status: 'future', description: 'Materialpool und Erfahrungsberichte zur Wahl der Leistungskurse.' },
   { date: '2026-03-08', title: 'Hygieneartikel-Rollout', category: 'Hygiene', status: 'future', description: 'Boxen auf allen Etagen auffüllen, Feedback sammeln und nachsteuern.' },
   { date: '2026-04-20', title: 'Frühjahrs-Sportfest', category: 'Sport', status: 'future', description: 'Mixed-Teams, faire Spielpläne und eine offene Wunschliste für Disziplinen.' },
-  { date: '2026-06-10', title: 'Sommerfest & Bühne', category: 'Event', status: 'future', description: 'SV-Stand mit Feedback-Wand, Unterstützung für Schülerbands und Technik.' },
+  { date: '2026-06-20', displayDate: 'Juni/Juli 2026', title: 'Fußballturnier', category: 'Sport', status: 'future', description: 'Geplantes Fußballturnier für mehrere Jahrgänge. Genauer Termin folgt.' },
+  { date: '2026-09-10', displayDate: 'September 2026', title: 'Sommerfest', category: 'Event', status: 'future', description: 'Großes Sommerfest mit Bühne, Ständen und Programm. Details folgen.' },
 ];
 
-const formatDate = (value) => new Intl.DateTimeFormat('de-DE', { day: '2-digit', month: '2-digit' }).format(new Date(value));
+const formatDate = (event) => event.displayDate ?? new Intl.DateTimeFormat('de-DE', { day: '2-digit', month: '2-digit' }).format(new Date(event.dateObj));
 
 const scroller = document.querySelector('[data-timeline-scroller]');
 const trackPast = document.querySelector('[data-track-past]');
@@ -56,7 +59,7 @@ if(eventsHost && scroller && trackPast && trackFuture && todayMarker){
     const card = document.createElement('article');
     card.className = `timeline-card ${event.status}`;
     card.innerHTML = `
-      <p class="timeline-date">${formatDate(event.dateObj)}</p>
+      <p class="timeline-date">${formatDate(event)}</p>
       <h3 class="timeline-title">${event.title}</h3>
       <p class="timeline-desc">${event.description}</p>
       <p class="news-meta" aria-hidden="true" style="margin-top:6px">${event.category}</p>

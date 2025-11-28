@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SV 2025/26 – Team Johann | Hans-Carossa-Gymnasium</title>
+  <title>SV 2025/26 | Hans-Carossa-Gymnasium</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='m64 48h-12c0-5.1-1.4-9.44-3.91-12.76.92-.16 1.89-.24 2.91-.24 8.02 0 13 4.98 13 13ZM13 32c4.32 0 7-2.68 7-7s-2.68-7-7-7-7 2.68-7 7 2.68 7 7 7Zm38 0c4.32 0 7-2.68 7-7s-2.68-7-7-7-7 2.68-7 7 2.68 7 7 7Zm-19-4c4.94 0 8-3.06 8-8s-3.06-8-8-8-8 3.06-8 8 3.06 8 8 8Zm0 4c-9.87 0-16 6.13-16 16h32c0-9.87-6.13-16-16-16ZM0 48h12c0-5.1 1.4-9.44 3.91-12.76-.92-.16-1.89-.24-2.91-.24-8.02 0-13 4.98-13 13Z' fill='%23C94079'/%3E%3C/svg%3E" />
-  <meta name="description" content="SV 2025/26 – Team Johann am Hans-Carossa-Gymnasium: Transparente Schülervertretung, Events, LK-Infomarkt, Hygieneartikel, Mitmachen." />
+  <meta name="description" content="SV 2025/26 am Hans-Carossa-Gymnasium: Transparente Schülervertretung, Events, LK-Infomarkt, Hygieneartikel, Mitmachen." />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
@@ -19,7 +19,7 @@
             </svg>
           </div>
           <div class="brand-copy">
-            <span>SV 2025/26 – Team Johann</span>
+            <span>SV 2025/26</span>
             <small>Schülervertretung am Hans‑Carossa‑Gymnasium</small>
           </div>
           <button class="nav-toggle" aria-controls="navlinks" aria-expanded="false" aria-label="Menü öffnen">☰ Menü</button>
@@ -30,6 +30,7 @@
           <a href="#sv">Schülervertretung</a>
           <a href="#ziele">Ziele</a>
           <a href="#mitmachen">Mitmachen!</a>
+          <a href="hygieneartikel.html">Hygieneartikel</a>
           <a class="btn btn-ghost btn-link" href="https://hcg-berlin.de" target="_blank" rel="noopener">Zur HCG‑Website</a>
         </div>
       </nav>
@@ -40,8 +41,8 @@
     <section class="hero" id="home">
       <div class="container hero-grid">
         <div class="hero-text">
-          <span class="badge"><i></i> Euer gewähltes Schülersprecherteam</span>
-          <h1>Gemeinsam HCG gestalten – <span style="color:var(--accent)">SV 2025/26 (Team Johann)</span></h1>
+          <span class="badge"><i></i> Schülervertretung und Hans-Carossa-Gymnasium</span>
+          <h1>Gemeinsam HCG gestalten – <span style="color:var(--accent)">SV 2025/26</span></h1>
           <p class="lead">Wir vertreten die Interessen aller Schülerinnen und Schüler am Hans‑Carossa‑Gymnasium. Gemeinsam mit dir stärken wir Events, erleichtern die LK‑Wahl, sorgen für transparente Gremienarbeit und kümmern uns um verlässliche Hygieneartikel.</p>
           <div class="cta">
             <a class="btn btn-accent" href="#mitmachen">Mach mit!</a>
@@ -59,19 +60,21 @@
       <div class="container">
         <h2>Was wir im Schuljahr bewegen</h2>
         <p class="desc">Eine schnelle Übersicht über unsere Termine, Projekte und Meilensteine – vergangene Ereignisse als Erinnerung, kommende als Einladung.</p>
-        <div class="timeline-wrapper">
-          <button class="timeline-nav" type="button" aria-label="Vorherige Ereignisse" data-timeline-nav="prev">‹</button>
-          <div>
-            <div class="timeline-track" aria-hidden="true">
-              <div class="track-past" data-track-past></div>
-              <div class="track-future" data-track-future></div>
-              <div class="today-marker" data-today-marker><span>Heute</span><span class="dot" aria-hidden="true"></span></div>
+        <div class="timeline-shell" tabindex="0" aria-label="Zeitstrahl der SV">
+          <div class="timeline-wrapper">
+            <button class="timeline-nav" type="button" aria-label="Vorherige Ereignisse" data-timeline-nav="prev">‹</button>
+            <div class="timeline-body">
+              <div class="timeline-track" aria-hidden="true">
+                <div class="track-past" data-track-past></div>
+                <div class="track-future" data-track-future></div>
+                <div class="today-marker" data-today-marker><span>Heute</span><span class="dot" aria-hidden="true"></span></div>
+              </div>
+              <div class="timeline-scroller" data-timeline-scroller tabindex="0" aria-label="Zeitleiste der SV">
+                <div class="timeline-events" data-timeline-events></div>
+              </div>
             </div>
-            <div class="timeline-scroller" data-timeline-scroller tabindex="0" aria-label="Zeitleiste der SV">
-              <div class="timeline-events" data-timeline-events></div>
-            </div>
+            <button class="timeline-nav" type="button" aria-label="Nächste Ereignisse" data-timeline-nav="next">›</button>
           </div>
-          <button class="timeline-nav" type="button" aria-label="Nächste Ereignisse" data-timeline-nav="next">›</button>
         </div>
       </div>
     </section>
@@ -81,18 +84,18 @@
         <h2>Updates aus der SV</h2>
         <p class="desc">Transparenz ist uns wichtig. Hier findest du unsere aktuellen Meldungen und kleine Einblicke hinter die Kulissen.</p>
         <div class="grid news-grid">
-          <article class="card news-card">
+          <a class="card news-card" href="https://hcg-berlin.de/wir-am-hcg/schuler/gsv/" target="_blank" rel="noopener">
             <p class="news-meta"><span class="news-date">03.09.2025</span> · Auftakt</p>
             <h3>Wir freuen uns auf dieses Schuljahr</h3>
             <p>Das neue SV-Team ist gewählt und startklar. Wir haben klare Zuständigkeiten festgelegt, eine offene Sprechstunde auf Teams eingerichtet und planen regelmäßige kurze Updates nach jeder GSV-Sitzung. Deine Anliegen sollen schnell dort ankommen, wo sie hingehören.</p>
-          </article>
-          <article class="card news-card">
+          </a>
+          <a class="card news-card" href="hygieneartikel.html">
             <p class="news-meta"><span class="news-date">18.10.2025</span> · Hygieneartikel</p>
             <h3>Hygieneartikel – aktueller Stand</h3>
             <p>Die erste Testbox im Oberstufenflur war oft leer – wir haben nachgefüllt, nachbestellt und gemeinsam mit dem Sozialteam klare Auffüllintervalle vereinbart. Ziel: mindestens eine verlässliche Box pro Etage. Rückmeldungen nehmen wir jederzeit entgegen.</p>
-          </article>
+          </a>
           <article class="card news-card">
-            <p class="news-meta"><span class="news-date">12.11.2025</span> · LK-Wahl</p>
+            <p class="news-meta"><span class="news-date">Januar 2026</span> · LK-Wahl</p>
             <h3>LK-Infomarkt: So unterstützen wir deine Wahl</h3>
             <p>Im Januar organisieren wir einen Infomarkt mit Mitschülerinnen und Mitschülern aus Q1 und Q3. Du bekommst Erfahrungsberichte zum Workload, Hinweise zu Prüfungen und Zugriff auf einen Materialpool mit Beispielaufgaben.</p>
           </article>
@@ -256,8 +259,8 @@
         <p>Gemeinsam mit dem Stadtteilzentrum Kladow planen wir mindestens drei größere Events. Sicherheit bei An- und Abreise sowie alkoholfreie Angebote bleiben Standard.</p>
       </article>
       <article class="card">
-        <h3>YOLO und Jubiläumsfest</h3>
-        <p>Wir bauen auf der erfolgreichen YOLO-Party auf und bringen eure Ideen für das Jubiläumsfest ein, damit es wirklich unser Fest wird.</p>
+        <h3>Nächste Highlights</h3>
+        <p>Sommerfest, Fußballturnier und weitere Partys sind in Planung. Eure Ideen für Bühne, Technik und Programm bringen wir direkt in die Organisation ein.</p>
       </article>
       <article class="card">
         <h3>Deine Playlist zählt</h3>
@@ -334,7 +337,7 @@
       <div><strong>Kontakt</strong></div>
       <div>Schülervertretung am Hans-Carossa-Gymnasium</div>
       <div>E-Mail: <a href="mailto:schuelervertretunghcog@gmail.com">schuelervertretunghcog@gmail.com</a></div>
-      <div><a href="https://hcg-berlin.de" target="_blank" rel="noopener">Zur HCG-Website</a> · <a href="https://hcg-berlin.de/wir-am-hcg/schuler/gsv/" target="_blank" rel="noopener">Zum GSV-Artikel</a></div>
+      <div><a href="https://hcg-berlin.de" target="_blank" rel="noopener">Zur HCG-Website</a> · <a href="https://hcg-berlin.de/wir-am-hcg/schuler/gsv/" target="_blank" rel="noopener">Zum GSV-Artikel</a> · <a href="hygieneartikel.html">Hygieneartikel</a></div>
       <div>© <span id="year"></span> Team Johann – Hans‑Carossa‑Gymnasium</div>
     </div>
   </footer>
