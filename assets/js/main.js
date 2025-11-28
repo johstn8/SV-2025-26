@@ -27,15 +27,20 @@ if(yearEl){
 
 // Timeline data: maintain events here
 const timelineEvents = [
-  { date: '2025-09-15', title: '1. GSV', category: 'GSV', status: 'past', description: 'Auftakt der Gesamtschülervertretung, Sammeln eurer Themen für das Schuljahr.' },
-  { date: '2025-11-10', title: 'Start: Kostenlose Hygieneartikel', category: 'Hygiene', status: 'past', description: 'Seit dem 10. November stehen auf der Mädchentoilette im Erdgeschoss kostenlose Hygieneartikel für Notfälle für euch bereit.' },
-  { date: '2025-11-14', title: 'YOLO-Party', category: 'Event', status: 'past', description: 'Gemeinsam mit dem Stadtteilzentrum Kladow – großer Dank an alle Helferinnen und Helfer!' },
-  { date: '2025-11-20', title: 'Video über die Gremien an unserer Schule', category: 'Transparenz', status: 'past', description: 'Erklärvideo zu GSV, Schulkonferenz und weiteren Gremien, damit alle wissen, wer wofür zuständig ist.' },
-  { date: '2025-12-17', title: '2. GSV', category: 'GSV', status: 'future', description: 'Rückblick auf erste Maßnahmen und Planung weiterer Projekte.' },
-  { date: '2025-12-20', displayDate: 'Dezember', title: 'Neue Hygiene-Boxen planen', category: 'Hygiene', status: 'future', description: 'Planung für mehr Boxen und Standorte im Dezember, damit alle Etagen versorgt sind.' },
-  { date: '2026-01-15', displayDate: 'Januar 2026', title: 'LK-Infomarkt & Materialpool', category: 'LK', status: 'future', description: 'Materialpool und Erfahrungsberichte zur Wahl der Leistungskurse.' },
-  { date: '2026-06-20', displayDate: 'Juni/Juli 2026', title: 'Fußballspiel', category: 'Sport', status: 'future', description: 'Geplantes Fußballspiel für mehrere Jahrgänge. Genauer Termin folgt.' },
-  { date: '2026-09-10', displayDate: 'September 2026', title: 'Sommerfest', category: 'Event', status: 'future', description: 'Großes Sommerfest mit Bühne, Ständen und Programm. Details folgen.' },
+  { date: '2025-09-08', title: 'Schuljahresbeginn', category: 'Start', description: '' },
+  { date: '2025-09-08', displayDate: '08.09. – 22.09.', title: 'Wahl der Klassen- und Jahrgangssprecher:innen', category: 'Wahlen', description: 'Gemeinsam habt ihr eure Klassen- und Jahrgangssprecher:innen gewählt – mit klaren Zuständigkeiten für die neuen Teams.' },
+  { date: '2025-10-01', title: 'Wahl des Schülersprecher:innen-Teams', category: 'Wahlen', description: 'Mit eurer Mehrheit wurde das neue Schülersprecher:innen-Team gewählt – Danke für das Vertrauen!' },
+  { date: '2025-10-07', title: '1. GSV', category: 'GSV', description: 'Auftakt der Gesamtschülervertretung, Sammeln eurer Themen für das Schuljahr.' },
+  { date: '2025-10-20', title: 'Video über die Gremien an unserer Schule', category: 'Transparenz', description: 'Kurzes Erklärvideo zu GSV, Schulkonferenz und Fachkonferenzen – damit klar ist, wo ihr mitsprechen könnt.' },
+  { date: '2025-11-14', title: 'YOLO-Party & Kultur-Dinner', category: 'Event', description: 'Gemeinsam mit dem Stadtteilzentrum Kladow und Raneem Hachim für Vielfalt: Party, Kultur-Dinner und eure Playlist.' },
+  { date: '2025-11-17', title: '1. Schulkonferenz', category: 'Schulkonferenz', description: 'Erfolgreicher Antrag: Protokolle sollen zeitnah veröffentlicht werden, damit alle informiert bleiben.' },
+  { date: '2025-11-28', title: 'Bestellung 2. Hygiene-Box', category: 'Hygiene', description: 'Wir haben die zweite Box bestellt, damit Hygieneartikel verlässlich an mehreren Standorten verfügbar sind.' },
+  { date: '2025-12-05', displayDate: 'Dezember', title: 'Hygiene-Artikel & 1. Schulkonferenz', category: 'Hygiene', description: 'Weitere Box bestellt, kostenlose Hygieneartikel aufgefüllt und unser Schulkonferenz-Antrag zur Veröffentlichung der Protokolle angenommen.' },
+  { date: '2025-12-08', displayDate: 'Dezember', title: 'Upload LK Materialpool', category: 'LK', description: 'Materialien zur Leistungskurswahl plus Notenrechner – alles an einem Ort für eure Entscheidung.' },
+  { date: '2025-12-12', displayDate: 'Dezember', title: 'Schachturnier', category: 'Event', description: 'Turnier für die 5.–7. Klassen – Taktik, Teamgeist und faire Partien kurz vor den Ferien.' },
+  { date: '2025-12-17', title: '2. GSV', category: 'GSV', description: 'Rückblick auf erste Maßnahmen und Planung weiterer Projekte.' },
+  { date: '2026-02-10', displayDate: 'Februar 2026', title: 'Zwischenumfrage zur SV-Arbeit', category: 'Transparenz', description: 'Wir wollen Feedback: Was läuft gut, wo können wir nachsteuern? Deine Meinung entscheidet über die nächsten Schritte.' },
+  { date: '2026-06-20', displayDate: 'Juni/Juli 2026', title: 'Fußballspiel', category: 'Sport', description: 'Geplantes Fußballspiel für mehrere Jahrgänge. Genauer Termin folgt.' },
 ];
 
 const formatDate = (event) => event.displayDate ?? new Intl.DateTimeFormat('de-DE', { day: '2-digit', month: '2-digit' }).format(new Date(event.dateObj));
@@ -47,9 +52,14 @@ const todayMarker = document.querySelector('[data-today-marker]');
 const eventsHost = document.querySelector('[data-timeline-events]');
 
 if(eventsHost && scroller && trackPast && trackFuture && todayMarker){
+  const now = new Date();
   const parsedEvents = timelineEvents
     .map((event) => ({ ...event, dateObj: new Date(event.date) }))
-    .sort((a, b) => a.dateObj - b.dateObj);
+    .sort((a, b) => a.dateObj - b.dateObj)
+    .map((event) => ({
+      ...event,
+      status: now.toDateString() === event.dateObj.toDateString() ? 'today' : now > event.dateObj ? 'past' : 'future',
+    }));
 
   parsedEvents.forEach((event) => {
     const card = document.createElement('article');
@@ -66,110 +76,42 @@ if(eventsHost && scroller && trackPast && trackFuture && todayMarker){
   const dates = parsedEvents.map((event) => event.dateObj.getTime());
   const minDate = new Date(Math.min(...dates));
   const maxDate = new Date(Math.max(...dates));
-  const now = new Date();
-  const pastDates = parsedEvents.filter((e) => e.status === 'past').map((e) => e.dateObj);
-  const futureDates = parsedEvents.filter((e) => e.status !== 'past').map((e) => e.dateObj);
 
-  let todayReference = now;
-  const anchorPast = parsedEvents.find((event) => event.title.toLowerCase().includes('video über die gremien'));
-  const anchorFuture = parsedEvents.find((event) => event.title.toLowerCase().includes('2. gsv'));
+  let markerPercent = 0;
+  if(now <= minDate){
+    markerPercent = 0;
+  } else if(now >= maxDate){
+    markerPercent = 100;
+  } else {
+    const segmentCount = parsedEvents.length - 1;
+    const positions = parsedEvents.map((_, index) => (index / segmentCount) * 100);
+    const futureIndex = parsedEvents.findIndex((event) => now <= event.dateObj);
+    const prevIndex = Math.max(0, futureIndex - 1);
+    const nextIndex = futureIndex === -1 ? parsedEvents.length - 1 : futureIndex;
+    const prevEvent = parsedEvents[prevIndex];
+    const nextEvent = parsedEvents[nextIndex];
+    const prevPos = positions[prevIndex];
+    const nextPos = positions[nextIndex];
 
-  if(anchorPast && anchorFuture){
-    todayReference = new Date((anchorPast.dateObj.getTime() + anchorFuture.dateObj.getTime()) / 2);
-  } else if(now < minDate || now > maxDate){
-    if(pastDates.length && futureDates.length){
-      todayReference = new Date((pastDates[pastDates.length - 1].getTime() + futureDates[0].getTime()) / 2);
+    if(now.toDateString() === nextEvent.dateObj.toDateString()){
+      markerPercent = nextPos;
     } else {
-      todayReference = minDate;
+      const span = Math.max(nextEvent.dateObj - prevEvent.dateObj, 1);
+      const progress = Math.min(Math.max(now - prevEvent.dateObj, 0), span);
+      const ratio = progress / span;
+      markerPercent = prevPos + (nextPos - prevPos) * ratio;
     }
   }
 
-  const range = Math.max(maxDate - minDate, 1);
-  const percent = Math.min(Math.max(((todayReference - minDate) / range) * 100, 0), 100);
-
-  trackPast.style.width = `${percent}%`;
-  trackFuture.style.width = `${100 - percent}%`;
-  trackFuture.style.left = `${percent}%`;
-  todayMarker.style.left = `${percent}%`;
+  trackPast.style.width = `${markerPercent}%`;
+  trackFuture.style.width = `${100 - markerPercent}%`;
+  trackFuture.style.left = `${markerPercent}%`;
+  todayMarker.style.left = `${markerPercent}%`;
   const todayLabel = todayMarker.querySelector('.today-label');
   if(todayLabel){
     todayLabel.textContent = 'Heute';
   }
 }
-
-// Goal overlay handling
-const overlay = document.querySelector('[data-goal-overlay]');
-const overlayBody = overlay?.querySelector('.goal-overlay__body');
-const goalTemplates = new Map();
-let lastTrigger = null;
-
-document.querySelectorAll('template[data-goal-template]').forEach((template) => {
-  const key = template.dataset.goalTemplate;
-  if(key){
-    goalTemplates.set(key, template);
-  }
-});
-
-const openGoal = (goal) => {
-  if(!overlay || !overlayBody){
-    return;
-  }
-  const template = goalTemplates.get(goal);
-  if(!template){
-    return;
-  }
-  overlayBody.innerHTML = '';
-  overlayBody.appendChild(template.content.cloneNode(true));
-  const heading = overlayBody.querySelector('h2');
-  if(heading){
-    heading.id = 'goal-overlay-title';
-  }
-  overlay.removeAttribute('hidden');
-  overlay.setAttribute('aria-hidden', 'false');
-  document.body.style.setProperty('overflow', 'hidden');
-  overlay.querySelector('[data-overlay-close]')?.focus();
-};
-
-const closeGoal = () => {
-  if(!overlay || !overlayBody){
-    return;
-  }
-  overlay.setAttribute('aria-hidden', 'true');
-  overlay.setAttribute('hidden', '');
-  overlayBody.innerHTML = '';
-  document.body.style.removeProperty('overflow');
-  if(lastTrigger && typeof lastTrigger.focus === 'function'){
-    lastTrigger.focus();
-  }
-  lastTrigger = null;
-};
-
-const goalTriggers = document.querySelectorAll('[data-goal]');
-goalTriggers.forEach((trigger) => {
-  trigger.addEventListener('click', (event) => {
-    event.preventDefault();
-    if(navLinks && navLinks.classList.contains('is-open')){
-      navLinks.classList.remove('is-open');
-      navToggle?.setAttribute('aria-expanded', 'false');
-    }
-    lastTrigger = trigger;
-    openGoal(trigger.dataset.goal);
-  });
-});
-
-if(overlay){
-  overlay.addEventListener('click', (event) => {
-    if(event.target === overlay || event.target.hasAttribute('data-overlay-close')){
-      closeGoal();
-    }
-  });
-}
-
-document.addEventListener('keydown', (event) => {
-  if(event.key === 'Escape' && overlay && overlay.getAttribute('aria-hidden') === 'false'){
-    closeGoal();
-  }
-});
 
 // Dummy form submission: clear form and show confirmation
 document.querySelectorAll('form').forEach((form) => {
@@ -179,24 +121,3 @@ document.querySelectorAll('form').forEach((form) => {
     alert('Danke! Dein Formular wurde abgeschickt.');
   });
 });
-
-// Inaktivität: nach 40s zurück zur Startseite
-const idleRedirectDelay = 40000;
-let idleTimer = null;
-
-const redirectHome = () => {
-  window.location.href = 'index.html';
-};
-
-const resetIdleTimer = () => {
-  if(idleTimer){
-    clearTimeout(idleTimer);
-  }
-  idleTimer = setTimeout(redirectHome, idleRedirectDelay);
-};
-
-['scroll', 'mousemove', 'keydown', 'touchstart'].forEach((evt) => {
-  window.addEventListener(evt, resetIdleTimer, { passive: true });
-});
-
-resetIdleTimer();
