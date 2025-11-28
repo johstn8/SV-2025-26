@@ -85,7 +85,7 @@ if(eventsHost && scroller && trackPast && trackFuture && todayMarker){
   trackPast.style.width = `${percent}%`;
   trackFuture.style.width = `${100 - percent}%`;
   trackFuture.style.left = `${percent}%`;
-  todayMarker.style.left = `calc(${percent}% - 1px)`;
+  todayMarker.style.left = `${percent}%`;
   todayMarker.querySelector('span').textContent = 'Heute';
 }
 
@@ -168,11 +168,7 @@ const idleRedirectDelay = 40000;
 let idleTimer = null;
 
 const redirectHome = () => {
-  if(window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === ''){
-    window.location.href = 'index.html#home';
-  } else {
-    window.location.href = 'index.html#home';
-  }
+  window.location.href = 'index.html';
 };
 
 const resetIdleTimer = () => {
