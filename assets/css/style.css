@@ -30,7 +30,8 @@ header{
 nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0}
 .brand{display:flex; align-items:center; gap:12px; flex:1 1 auto; min-width:0}
 .brand-link{display:flex; align-items:center; gap:12px; color:inherit; text-decoration:none}
-.brand-link:hover{color:inherit; text-decoration:none}
+.brand-link:hover,
+.brand-link:focus-visible{color:inherit; text-decoration:none !important}
 .brand-mark{height:46px; width:46px; border-radius:14px; background:#fff; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; padding:6px; box-shadow:var(--shadow)}
 .brand-mark svg{height:100%; width:100%}
 .brand-copy span{display:block; font-size:clamp(20px, 4vw, 30px); font-weight:700; line-height:1}
@@ -92,7 +93,7 @@ h1{font-size:clamp(30px, 4vw, 48px); line-height:1.08; margin:14px 0}
 .track-past{left:0; background:var(--muted); background-image:repeating-linear-gradient(90deg, rgba(255,255,255,.9) 0 12px, transparent 12px 22px)}
 .track-future{right:auto; background:var(--accent)}
 .today-marker{position:absolute; top:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; transform:translate(-50%, -50%)}
-.today-marker .today-label{position:absolute; bottom:100%; margin-bottom:10px; padding:6px 10px; border-radius:12px; border:1px solid var(--border); background:#fff; box-shadow:var(--shadow); font-weight:700; color:var(--accent)}
+.today-marker .today-label{position:absolute; bottom:100%; margin-bottom:14px; padding:6px 10px; border-radius:12px; border:1px solid var(--border); background:#fff; box-shadow:var(--shadow); font-weight:700; color:var(--accent)}
 .today-marker .dot{width:14px; height:14px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px rgba(201,64,121,.18); flex:0 0 auto}
 .timeline-events{display:flex; gap:14px; align-items:stretch; padding-bottom:6px; width:max-content}
 .timeline-card{min-width:240px; max-width:260px; border:1px solid var(--border); border-radius:14px; padding:14px; background:#fff; box-shadow:var(--shadow); position:relative}
