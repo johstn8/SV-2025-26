@@ -31,8 +31,8 @@ const timelineEvents = [
   { date: '2025-11-10', title: 'Start: Kostenlose Hygieneartikel', category: 'Hygiene', status: 'past', description: 'Seit dem 10. November stehen auf den Mädchentoiletten kostenlose Hygieneartikel bereit. Wir starten mit Testboxen, um zu sehen, was ihr wirklich braucht.' },
   { date: '2025-11-14', title: 'YOLO-Party', category: 'Event', status: 'past', description: 'Gemeinsam mit dem Stadtteilzentrum Kladow – großer Dank an alle Helferinnen und Helfer!' },
   { date: '2025-11-20', title: 'Video über die Gremien an unserer Schule', category: 'Transparenz', status: 'past', description: 'Erklärvideo zu GSV, Schulkonferenz und weiteren Gremien, damit alle wissen, wer wofür zuständig ist.' },
-  { date: '2025-12-05', title: 'Neue Hygiene-Boxen planen', category: 'Hygiene', status: 'future', description: 'Planung für mehr Boxen und Standorte im Dezember, damit alle Etagen versorgt sind.' },
   { date: '2025-12-17', title: '2. GSV', category: 'GSV', status: 'future', description: 'Rückblick auf erste Maßnahmen und Planung weiterer Projekte.' },
+  { date: '2025-12-20', displayDate: 'Dezember', title: 'Neue Hygiene-Boxen planen', category: 'Hygiene', status: 'future', description: 'Planung für mehr Boxen und Standorte im Dezember, damit alle Etagen versorgt sind.' },
   { date: '2026-01-15', displayDate: 'Januar 2026', title: 'LK-Infomarkt & Materialpool', category: 'LK', status: 'future', description: 'Materialpool und Erfahrungsberichte zur Wahl der Leistungskurse.' },
   { date: '2026-06-20', displayDate: 'Juni/Juli 2026', title: 'Fußballspiel', category: 'Sport', status: 'future', description: 'Geplantes Fußballspiel für mehrere Jahrgänge. Genauer Termin folgt.' },
   { date: '2026-09-10', displayDate: 'September 2026', title: 'Sommerfest', category: 'Event', status: 'future', description: 'Großes Sommerfest mit Bühne, Ständen und Programm. Details folgen.' },
@@ -71,7 +71,12 @@ if(eventsHost && scroller && trackPast && trackFuture && todayMarker){
   const futureDates = parsedEvents.filter((e) => e.status !== 'past').map((e) => e.dateObj);
 
   let todayReference = now;
-  if(now < minDate || now > maxDate){
+  const anchorPast = parsedEvents.find((event) => event.title.toLowerCase().includes('yolo-party'));
+  const anchorFuture = parsedEvents.find((event) => event.title.toLowerCase().includes('2. gsv'));
+
+  if(anchorPast && anchorFuture){
+    todayReference = new Date((anchorPast.dateObj.getTime() + anchorFuture.dateObj.getTime()) / 2);
+  } else if(now < minDate || now > maxDate){
     if(pastDates.length && futureDates.length){
       todayReference = new Date((pastDates[pastDates.length - 1].getTime() + futureDates[0].getTime()) / 2);
     } else {
