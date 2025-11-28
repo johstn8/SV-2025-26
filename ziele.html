@@ -58,128 +58,47 @@
     <section class="section">
       <div class="container">
         <div class="grid goal-grid">
-          <button class="card goal-card" type="button" data-goal="feste">
+          <div class="card goal-card" aria-label="Events &amp; Partys">
             <div class="goal-card__header">
               <span class="goal-card__icon" aria-hidden="true">
                 <img src="media/partys-und-events.png" alt="" />
               </span>
               <h3>Events &amp; Partys</h3>
             </div>
-            <p>Mindestens drei große Events mit sicherer An- und Abreise und eurer Wunsch-Playlist.</p>
-          </button>
-          <button class="card goal-card" type="button" data-goal="lk">
+            <p>Mindestens drei Highlights mit sicherer An- und Abreise, Playlist-Wünsche aus der Schülerschaft und einer Vorschau auf Schachturnier, Podiumsdiskussion zum Wehrdienst und das große Fußballspiel.</p>
+          </div>
+          <div class="card goal-card" aria-label="Erleichterung der LK-Wahl">
             <div class="goal-card__header">
               <span class="goal-card__icon" aria-hidden="true">
                 <img src="media/lk-boerse.png" alt="" />
               </span>
               <h3>Erleichterung der LK‑Wahl</h3>
             </div>
-            <p>LK-Infomarkt, Materialpool und ehrliche Erfahrungsberichte aus Q1 und Q3.</p>
-          </button>
-          <button class="card goal-card" type="button" data-goal="hygiene">
+            <p>Materialpool, Notenrechner und ehrliche Erfahrungsberichte aus Q1 und Q3 unterstützen dich bei der Wahl deiner Leistungskurse.</p>
+          </div>
+          <div class="card goal-card" aria-label="Kostenlose Hygieneartikel">
             <div class="goal-card__header">
               <span class="goal-card__icon" aria-hidden="true">
                 <img src="media/hygieneartikel.png" alt="" />
               </span>
               <h3>Kostenlose Hygieneartikel</h3>
             </div>
-            <p>Pro Etage mindestens eine verlässliche Box, regelmäßige Auffüllung.</p>
-          </button>
-          <button class="card goal-card" type="button" data-goal="konferenz">
+            <p>Pro Etage mindestens eine verlässliche Box, regelmäßige Auffüllung und transparente Updates aus der Schulkonferenz.</p>
+          </div>
+          <div class="card goal-card" aria-label="Transparente Schülervertretung">
             <div class="goal-card__header">
               <span class="goal-card__icon" aria-hidden="true">
                 <img src="media/schulkonferenz.png" alt="" />
               </span>
               <h3>Transparente Schülervertretung</h3>
             </div>
-            <p>Aufklärung über die Gremienarbeit an unserer Schule und regelmäßige Updates zu den Projekten.</p>
-          </button>
+            <p>Aufklärung über die Gremienarbeit an unserer Schule, verständliche Protokolle und regelmäßige Updates zu allen Projekten.</p>
+          </div>
         </div>
+        <p style="margin-top:10px; color:var(--muted)">Ausführliche Beschreibungen zu allen vier Projekten veröffentlichen wir in der zweiten Dezemberwoche.</p>
       </div>
     </section>
   </main>
-
-  <template data-goal-template="feste">
-    <h2>Events &amp; Partys</h2>
-    <div class="grid goal-detail-grid">
-      <article class="card">
-        <h3>Mehr Events für alle</h3>
-        <p>Gemeinsam mit dem Stadtteilzentrum Kladow planen wir mindestens drei größere Events. Sicherheit bei An- und Abreise sowie alkoholfreie Angebote bleiben Standard.</p>
-      </article>
-      <article class="card">
-        <h3>Nächste Highlights</h3>
-        <p>Sommerfest, Fußballspiel und weitere Partys sind in Planung. Eure Ideen für Bühne, Technik und Programm bringen wir direkt in die Organisation ein.</p>
-      </article>
-      <article class="card">
-        <h3>Deine Playlist zählt</h3>
-        <p>Vor jedem Event sammeln wir Musikwünsche und Rollen für Helferinnen und Helfer. Transparente Budgetplanung inklusive.</p>
-      </article>
-    </div>
-  </template>
-
-  <template data-goal-template="lk">
-    <h2>Erleichterung der LK‑Wahl</h2>
-    <p>Wir wollen, dass du deine Leistungskurse informiert und sicher wählst.</p>
-    <div class="grid goal-detail-grid">
-      <article class="card">
-        <h3>LK‑Infomarkt &amp; Materialpool</h3>
-        <p>Im Januar beantworten Q1- und Q3-Schülerinnen und -Schüler deine Fragen zu Workload, Prüfungen und Lernwegen – inklusive Materialpool mit Beispielen.</p>
-      </article>
-      <article class="card">
-        <h3>Materialpool</h3>
-        <p>Beispielaufgaben, Klausuren und Tipps werden gesammelt und strukturiert bereitgestellt.</p>
-      </article>
-      <article class="card">
-        <h3>Feedbackrunde</h3>
-        <p>Nach dem Infomarkt veröffentlichen wir eine Zusammenfassung und passen das Format für das nächste Jahr an.</p>
-      </article>
-    </div>
-  </template>
-
-  <template data-goal-template="hygiene">
-    <h2>Kostenlose Hygieneartikel</h2>
-    <div class="grid goal-detail-grid">
-      <article class="card">
-        <h3>Verlässliche Versorgung</h3>
-        <p>Eine Box pro Etage, gut erreichbar und regelmäßig aufgefüllt. Hinweise kannst du per Teams oder im Formular geben.</p>
-      </article>
-      <article class="card">
-        <h3>Finanzierung</h3>
-        <p>Wir nutzen Mittel der Spandauer Jugendjury und sprechen mit dem Förderverein, um monatlich rund 40 € für Hygieneartikel zu sichern.</p>
-      </article>
-      <article class="card">
-        <h3>Transparenz</h3>
-        <p>Wir posten, wann nachgefüllt wurde und welche Rückmeldungen wir erhalten haben, damit du weißt, was passiert.</p>
-      </article>
-    </div>
-  </template>
-
-  <template data-goal-template="konferenz">
-    <h2>Transparente Schülervertretung</h2>
-    <p>Wir wollen, dass jede Entscheidung nachvollziehbar ist.</p>
-    <div class="grid goal-detail-grid">
-      <article class="card">
-        <h3>Updates</h3>
-        <p>Nach jeder GSV-Sitzung gibt es eine kurze Zusammenfassung. Ziel: mindestens zwei Posts pro Monat mit den wichtigsten Punkten.</p>
-      </article>
-      <article class="card">
-        <h3>Schulkonferenz</h3>
-        <p>Wir bereiten Anträge mit dir vor, nehmen deine Anliegen mit und berichten, was beschlossen wurde und welche Schritte folgen.</p>
-      </article>
-      <article class="card">
-        <h3>Feedback offen halten</h3>
-        <p>Vor wichtigen Abstimmungen fragen wir nach deiner Meinung. So fließt dein Feedback direkt in Entscheidungen ein.</p>
-      </article>
-    </div>
-  </template>
-
-  <div class="goal-overlay" data-goal-overlay hidden aria-hidden="true">
-    <div class="goal-overlay__card" role="dialog" aria-modal="true" aria-labelledby="goal-overlay-title">
-      <button class="goal-overlay__close" type="button" data-overlay-close aria-label="Overlay schließen">×</button>
-      <div class="goal-overlay__body" id="goal-overlay-content"></div>
-    </div>
-  </div>
-
     <footer class="footer">
     <div class="container contact">
       <div><strong>Kontakt</strong></div>
