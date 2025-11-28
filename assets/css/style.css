@@ -86,7 +86,8 @@ h1{font-size:clamp(30px, 4vw, 48px); line-height:1.08; margin:14px 0}
 .timeline-track .track-past,.timeline-track .track-future{position:absolute; top:50%; transform:translateY(-50%); height:6px; border-radius:999px}
 .track-past{left:0; background:var(--muted); background-image:repeating-linear-gradient(90deg, rgba(255,255,255,.9) 0 12px, transparent 12px 22px)}
 .track-future{right:auto; background:var(--accent)}
-.today-marker{position:absolute; top:50%; display:flex; align-items:center; gap:8px; font-weight:700; color:var(--accent); transform:translate(-50%, -50%)}
+.today-marker{position:absolute; top:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; transform:translate(-50%, -50%)}
+.today-marker .today-label{position:absolute; bottom:100%; margin-bottom:10px; padding:6px 10px; border-radius:12px; border:1px solid var(--border); background:#fff; box-shadow:var(--shadow); font-weight:700; color:var(--accent)}
 .today-marker .dot{width:14px; height:14px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px rgba(201,64,121,.18); flex:0 0 auto}
 .timeline-events{display:flex; gap:14px; align-items:stretch; padding-bottom:6px}
 

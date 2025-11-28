@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SV-Team | SV 2025/26 – Hans-Carossa-Gymnasium</title>
+  <title>Zeitstrahl | SV 2025/26 – Hans-Carossa-Gymnasium</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='m64 48h-12c0-5.1-1.4-9.44-3.91-12.76.92-.16 1.89-.24 2.91-.24 8.02 0 13 4.98 13 13ZM13 32c4.32 0 7-2.68 7-7s-2.68-7-7-7-7 2.68-7 7 2.68 7 7 7Zm38 0c4.32 0 7-2.68 7-7s-2.68-7-7-7-7 2.68-7 7 2.68 7 7 7Zm-19-4c4.94 0 8-3.06 8-8s-3.06-8-8-8-8 3.06-8 8 3.06 8 8 8Zm0 4c-9.87 0-16 6.13-16 16h32c0-9.87-6.13-16-16-16ZM0 48h12c0-5.1 1.4-9.44 3.91-12.76-.92-.16-1.89-.24-2.91-.24-8.02 0-13 4.98-13 13Z' fill='%23C94079'/%3E%3C/svg%3E" />
-  <meta name="description" content="Das Schülersprecherteam 2025/26 am HCG stellt sich vor: Ziele, Motivation und Kontakt." />
+  <meta name="description" content="Zeitstrahl der SV 2025/26 am HCG: Termine, Projekte und Meilensteine des Schuljahres." />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
@@ -39,39 +39,43 @@
   </header>
 
   <main>
-    <section class="hero" id="team">
+    <section class="hero" id="timeline">
       <div class="container hero-grid">
         <div class="hero-text">
-          <span class="badge"><i></i> Team Johann stellt sich vor</span>
-          <h1>Wir vertreten euch im Schuljahr 2025/26</h1>
-          <p class="lead">Johann Stein, Jasmin Winsche, Lotta Schuster und Julian Rebafka arbeiten als Schülersprecherteam eng mit der Gesamtschülervertretung zusammen. Hier findest du unsere Motivation, Aufgaben und Wege, uns zu erreichen.</p>
+          <span class="badge"><i></i> Was wir im Schuljahr bewegen</span>
+          <h1>Unser Zeitstrahl mit Projekten und Terminen</h1>
+          <p class="lead">Vergangene Ereignisse als Erinnerung, kommende als Einladung: Hier findest du die wichtigsten Schritte der SV 2025/26.</p>
           <div class="cta">
             <a class="btn btn-accent" href="mitmachen.html">Mitmachen!</a>
-            <a class="btn btn-ghost" href="zeitstrahl.html">Zum Zeitstrahl</a>
+            <a class="btn btn-ghost" href="updates.html">Zu den Updates</a>
           </div>
         </div>
-        <div class="team-media">
-          <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80" alt="Schülersprecherteam der SV 2025/26" />
-          <span class="label">Team Johann</span>
+        <div class="card" aria-hidden="true">
+          <h3>So nutzt du die Timeline</h3>
+          <p>Scroll oder wische nach rechts, um kommende Termine zu sehen. Der Heute-Marker zeigt dir genau, wo wir im Schuljahr stehen.</p>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="container grid cols-2" style="align-items:center">
-        <div class="card team-card">
-          <h2>Unsere Motivation</h2>
-          <p><strong>Wer wir sind:</strong> Wir vertreten die Interessen aller Schülerinnen und Schüler am HCG und bringen eure Anliegen in GSV, Schul- und Fachkonferenzen ein.</p>
-          <p><strong>Was uns wichtig ist:</strong> Mehr Events, eine faire LK-Wahl, verlässliche Hygieneartikel und transparente Kommunikation – das sind unsere vier Schwerpunkte.</p>
-          <p><strong>Wie wir arbeiten:</strong> Kurze Entscheidungswege, Feedbackrunden, Posts nach Sitzungen und klare Zuständigkeiten. Sprich uns jederzeit an.</p>
-        </div>
-        <div class="grid cols-1" style="gap:14px">
-          <div class="framed-video" aria-label="Bewerbungsvideo Team Johann">
-            <iframe src="https://www.youtube.com/embed/hFGqXXMgEBQ" title="Bewerbungsvideo Team Johann" allowfullscreen></iframe>
-          </div>
-          <div class="card">
-            <h3>Kontaktmöglichkeiten</h3>
-            <p>Schreib uns auf Teams, per Mail oder nutze das Formular auf der Mitmachen-Seite. Wir veröffentlichen regelmäßig kurze Updates nach jeder GSV-Sitzung.</p>
+      <div class="container">
+        <h2>Was wir im Schuljahr bewegen</h2>
+        <p class="desc">Eine schnelle Übersicht über Termine, Projekte und Meilensteine der Schülervertretung.</p>
+        <div class="timeline-shell" tabindex="0" aria-label="Zeitstrahl der SV">
+          <div class="timeline-wrapper">
+            <div class="timeline-body">
+              <div class="timeline-track" aria-hidden="true">
+                <div class="track-past" data-track-past></div>
+                <div class="track-future" data-track-future></div>
+                <div class="today-marker" data-today-marker>
+                  <span class="today-label">Heute</span>
+                  <span class="dot" aria-hidden="true"></span>
+                </div>
+              </div>
+              <div class="timeline-scroller" data-timeline-scroller tabindex="0" aria-label="Zeitleiste der SV">
+                <div class="timeline-events" data-timeline-events></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
