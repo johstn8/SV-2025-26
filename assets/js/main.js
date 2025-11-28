@@ -27,18 +27,14 @@ if(yearEl){
 
 // Timeline data: maintain events here
 const timelineEvents = [
-  { date: '2025-09-15', title: 'GSV-Sitzung 1', category: 'GSV', status: 'past', description: 'Auftakt der Gesamtschülervertretung, Sammeln eurer Themen für das Schuljahr.' },
-  { date: '2025-10-10', title: 'Hygieneartikel-Pilot', category: 'Hygiene', status: 'past', description: 'Erste Box im Oberstufenflur getestet und mit dem Sozialteam ausgewertet.' },
+  { date: '2025-09-15', title: '1. GSV', category: 'GSV', status: 'past', description: 'Auftakt der Gesamtschülervertretung, Sammeln eurer Themen für das Schuljahr.' },
   { date: '2025-11-10', title: 'Start: Kostenlose Hygieneartikel', category: 'Hygiene', status: 'past', description: 'Seit dem 10. November stehen auf den Mädchentoiletten kostenlose Hygieneartikel bereit. Wir starten mit Testboxen, um zu sehen, was ihr wirklich braucht.' },
   { date: '2025-11-14', title: 'YOLO-Party', category: 'Event', status: 'past', description: 'Gemeinsam mit dem Stadtteilzentrum Kladow – großer Dank an alle Helferinnen und Helfer!' },
   { date: '2025-11-20', title: 'Video über die Gremien an unserer Schule', category: 'Transparenz', status: 'past', description: 'Erklärvideo zu GSV, Schulkonferenz und weiteren Gremien, damit alle wissen, wer wofür zuständig ist.' },
   { date: '2025-12-05', title: 'Neue Hygiene-Boxen planen', category: 'Hygiene', status: 'future', description: 'Planung für mehr Boxen und Standorte im Dezember, damit alle Etagen versorgt sind.' },
-  { date: '2025-12-12', title: 'Winterturnier', category: 'Sport', status: 'future', description: 'Basketball- und Volleyball-Turnier mit Feedbackrunde für faire Regeln.' },
-  { date: '2025-12-17', title: '2. GSV-Sitzung', category: 'GSV', status: 'future', description: 'Rückblick auf erste Maßnahmen und Planung weiterer Projekte.' },
-  { date: '2026-01-15', displayDate: 'Januar 2026', title: 'LK-Infomarkt', category: 'LK', status: 'future', description: 'Materialpool und Erfahrungsberichte zur Wahl der Leistungskurse.' },
-  { date: '2026-03-08', title: 'Hygieneartikel-Rollout', category: 'Hygiene', status: 'future', description: 'Boxen auf allen Etagen auffüllen, Feedback sammeln und nachsteuern.' },
-  { date: '2026-04-20', title: 'Frühjahrs-Sportfest', category: 'Sport', status: 'future', description: 'Mixed-Teams, faire Spielpläne und eine offene Wunschliste für Disziplinen.' },
-  { date: '2026-06-20', displayDate: 'Juni/Juli 2026', title: 'Fußballturnier', category: 'Sport', status: 'future', description: 'Geplantes Fußballturnier für mehrere Jahrgänge. Genauer Termin folgt.' },
+  { date: '2025-12-17', title: '2. GSV', category: 'GSV', status: 'future', description: 'Rückblick auf erste Maßnahmen und Planung weiterer Projekte.' },
+  { date: '2026-01-15', displayDate: 'Januar 2026', title: 'LK-Infomarkt & Materialpool', category: 'LK', status: 'future', description: 'Materialpool und Erfahrungsberichte zur Wahl der Leistungskurse.' },
+  { date: '2026-06-20', displayDate: 'Juni/Juli 2026', title: 'Fußballspiel', category: 'Sport', status: 'future', description: 'Geplantes Fußballspiel für mehrere Jahrgänge. Genauer Termin folgt.' },
   { date: '2026-09-10', displayDate: 'September 2026', title: 'Sommerfest', category: 'Event', status: 'future', description: 'Großes Sommerfest mit Bühne, Ständen und Programm. Details folgen.' },
 ];
 
@@ -62,7 +58,7 @@ if(eventsHost && scroller && trackPast && trackFuture && todayMarker){
       <p class="timeline-date">${formatDate(event)}</p>
       <h3 class="timeline-title">${event.title}</h3>
       <p class="timeline-desc">${event.description}</p>
-      <p class="news-meta" aria-hidden="true" style="margin-top:6px">${event.category}</p>
+      <span class="timeline-tag" aria-hidden="true">${event.category}</span>
     `;
     eventsHost.appendChild(card);
   });
@@ -89,12 +85,8 @@ if(eventsHost && scroller && trackPast && trackFuture && todayMarker){
   trackPast.style.width = `${percent}%`;
   trackFuture.style.width = `${100 - percent}%`;
   trackFuture.style.left = `${percent}%`;
-  todayMarker.style.left = `calc(${percent}% - 4px)`;
+  todayMarker.style.left = `calc(${percent}% - 1px)`;
   todayMarker.querySelector('span').textContent = 'Heute';
-
-  const scrollByAmount = () => scroller.clientWidth - 100;
-  document.querySelectorAll('[data-timeline-nav="next"]').forEach((btn) => btn.addEventListener('click', () => scroller.scrollBy({ left: scrollByAmount(), behavior: 'smooth' })));
-  document.querySelectorAll('[data-timeline-nav="prev"]').forEach((btn) => btn.addEventListener('click', () => scroller.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' })));
 }
 
 // Goal overlay handling
@@ -170,3 +162,28 @@ document.addEventListener('keydown', (event) => {
     closeGoal();
   }
 });
+
+// Inaktivität: nach 40s zurück zur Startseite
+const idleRedirectDelay = 40000;
+let idleTimer = null;
+
+const redirectHome = () => {
+  if(window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === ''){
+    window.location.href = 'index.html#home';
+  } else {
+    window.location.href = 'index.html#home';
+  }
+};
+
+const resetIdleTimer = () => {
+  if(idleTimer){
+    clearTimeout(idleTimer);
+  }
+  idleTimer = setTimeout(redirectHome, idleRedirectDelay);
+};
+
+['scroll', 'mousemove', 'keydown', 'touchstart'].forEach((evt) => {
+  window.addEventListener(evt, resetIdleTimer, { passive: true });
+});
+
+resetIdleTimer();
