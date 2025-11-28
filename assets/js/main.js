@@ -27,18 +27,40 @@ if(yearEl){
 
 // Timeline data: maintain events here
 const timelineEvents = [
-  { date: '2025-09-15', title: '1. GSV', category: 'GSV', status: 'past', description: 'Auftakt der Gesamtschülervertretung, Sammeln eurer Themen für das Schuljahr.' },
-  { date: '2025-11-10', title: 'Start: Kostenlose Hygieneartikel', category: 'Hygiene', status: 'past', description: 'Seit dem 10. November stehen auf der Mädchentoilette im Erdgeschoss kostenlose Hygieneartikel für Notfälle für euch bereit.' },
-  { date: '2025-11-14', title: 'YOLO-Party', category: 'Event', status: 'past', description: 'Gemeinsam mit dem Stadtteilzentrum Kladow – großer Dank an alle Helferinnen und Helfer!' },
-  { date: '2025-11-20', title: 'Video über die Gremien an unserer Schule', category: 'Transparenz', status: 'past', description: 'Erklärvideo zu GSV, Schulkonferenz und weiteren Gremien, damit alle wissen, wer wofür zuständig ist.' },
-  { date: '2025-12-17', title: '2. GSV', category: 'GSV', status: 'future', description: 'Rückblick auf erste Maßnahmen und Planung weiterer Projekte.' },
-  { date: '2025-12-20', displayDate: 'Dezember', title: 'Neue Hygiene-Boxen planen', category: 'Hygiene', status: 'future', description: 'Planung für mehr Boxen und Standorte im Dezember, damit alle Etagen versorgt sind.' },
-  { date: '2026-01-15', displayDate: 'Januar 2026', title: 'LK-Infomarkt & Materialpool', category: 'LK', status: 'future', description: 'Materialpool und Erfahrungsberichte zur Wahl der Leistungskurse.' },
-  { date: '2026-06-20', displayDate: 'Juni/Juli 2026', title: 'Fußballspiel', category: 'Sport', status: 'future', description: 'Geplantes Fußballspiel für mehrere Jahrgänge. Genauer Termin folgt.' },
-  { date: '2026-09-10', displayDate: 'September 2026', title: 'Sommerfest', category: 'Event', status: 'future', description: 'Großes Sommerfest mit Bühne, Ständen und Programm. Details folgen.' },
+  { start: '2025-09-08', title: 'Schuljahresbeginn', category: 'Schule', description: '' },
+  { start: '2025-09-08', end: '2025-09-22', title: 'Wahl der Klassen- und Jahrgangssprecher:innen', category: 'Wahlen', description: 'Klassenteams organisieren Urnen, sammeln Kandidaturen und wählen ihre neuen Sprecher:innen.' },
+  { start: '2025-10-07', title: 'Wahl des Schülersprecher:innen-Teams', category: 'Wahlen', description: 'Alle Klassen- und Jahrgangssprecher:innen stimmen über das neue Sprecher:innen-Team ab.' },
+  { start: '2025-10-14', title: '1. GSV', category: 'GSV', description: 'Auftakt der Gesamtschülervertretung, Sammeln eurer Themen für das Schuljahr.' },
+  { start: '2025-10-20', title: 'Video über die Gremien an unserer Schule', category: 'Transparenz', description: 'Kurzclip zu GSV, Schulkonferenz und Gesamtelternvertretung – wer entscheidet was und wie könnt ihr mitreden?' },
+  { start: '2025-11-10', title: 'Start: Kostenlose Hygieneartikel', category: 'Hygiene', description: 'Seit dem 10. November stehen auf der Mädchentoilette im Erdgeschoss kostenlose Hygieneartikel für Notfälle für euch bereit.' },
+  { start: '2025-11-14', title: 'YOLO-Party & Kultur-Dinner', category: 'Event', description: 'Vom Stadtteilzentrum Kladow mitorganisiert; Raneem Hachim bringt beim Kultur-Dinner Stimmen für Vielfalt an einen Tisch.' },
+  { start: '2025-11-17', title: '1. Schulkonferenz', category: 'Schulkonferenz', description: 'Erfolgreicher erster Antrag für die zeitnahe Veröffentlichung der Schulkonferenz-Protokolle.' },
+  { start: '2025-11-28', title: 'Bestellung 2. Hygiene-Box', category: 'Hygiene', description: 'Nach dem erfolgreichen Start ordern wir eine zweite Box für eine weitere Etage.' },
+  { start: '2025-12-05', displayDate: 'Dezember', title: 'Hygiene-Artikel & 1. Schulkonferenz', category: 'Hygiene', description: 'Weitere Box bestellt, Hygiene-Artikel wieder kostenlos verfügbar. Zudem setzen wir den Schulkonferenz-Antrag zur schnellen Protokoll-Veröffentlichung um.' },
+  { start: '2025-12-10', displayDate: 'Dezember', title: 'Upload LK Materialpool', category: 'LK', description: 'Materialien zur Leistungskurswahl plus Notenrechner für die Schüler:innen.' },
+  { start: '2025-12-12', displayDate: 'Dezember', title: 'Schachturnier', category: 'Event', description: 'Turnier für die Klassen 5 bis 7 – alle Partien auf dem Pausenhof-Festivalplan.' },
+  { start: '2025-12-17', title: '2. GSV', category: 'GSV', description: 'Rückblick auf erste Maßnahmen und Planung weiterer Projekte.' },
+  { start: '2026-02-10', displayDate: 'Februar 2026', title: 'Zwischenumfrage zur Arbeit der SV', category: 'Feedback', description: 'Kurze Umfrage zu Transparenz, Mitbestimmung und welche Projekte wir priorisieren sollen.' },
+  { start: '2026-06-20', displayDate: 'Juni/Juli 2026', title: 'Fußballspiel', category: 'Sport', description:'Geplantes Fußballspiel für mehrere Jahrgänge. Genauer Termin folgt.' },
 ];
 
-const formatDate = (event) => event.displayDate ?? new Intl.DateTimeFormat('de-DE', { day: '2-digit', month: '2-digit' }).format(new Date(event.dateObj));
+const normalizeDate = (date) => {
+  const normalized = new Date(date);
+  normalized.setHours(0, 0, 0, 0);
+  return normalized;
+};
+
+const formatDate = (event) => {
+  if(event.displayDate){
+    return event.displayDate;
+  }
+  if(event.startDate.getTime() !== event.endDate.getTime()){
+    const startLabel = new Intl.DateTimeFormat('de-DE', { day: '2-digit', month: '2-digit' }).format(event.startDate);
+    const endLabel = new Intl.DateTimeFormat('de-DE', { day: '2-digit', month: '2-digit' }).format(event.endDate);
+    return `${startLabel} – ${endLabel}`;
+  }
+  return new Intl.DateTimeFormat('de-DE', { day: '2-digit', month: '2-digit' }).format(event.startDate);
+};
 
 const scroller = document.querySelector('[data-timeline-scroller]');
 const trackPast = document.querySelector('[data-track-past]');
@@ -47,9 +69,24 @@ const todayMarker = document.querySelector('[data-today-marker]');
 const eventsHost = document.querySelector('[data-timeline-events]');
 
 if(eventsHost && scroller && trackPast && trackFuture && todayMarker){
+  const today = normalizeDate(new Date());
+
   const parsedEvents = timelineEvents
-    .map((event) => ({ ...event, dateObj: new Date(event.date) }))
-    .sort((a, b) => a.dateObj - b.dateObj);
+    .map((event) => {
+      const startDate = normalizeDate(event.start);
+      const endDate = normalizeDate(event.end ?? event.start);
+      const midpoint = new Date((startDate.getTime() + endDate.getTime()) / 2);
+      const isCurrent = today >= startDate && today <= endDate;
+      const isPast = today > endDate;
+      return {
+        ...event,
+        startDate,
+        endDate,
+        midpoint,
+        status: isPast ? 'past' : isCurrent ? 'current' : 'future',
+      };
+    })
+    .sort((a, b) => a.startDate - b.startDate);
 
   parsedEvents.forEach((event) => {
     const card = document.createElement('article');
@@ -63,29 +100,27 @@ if(eventsHost && scroller && trackPast && trackFuture && todayMarker){
     eventsHost.appendChild(card);
   });
 
-  const dates = parsedEvents.map((event) => event.dateObj.getTime());
-  const minDate = new Date(Math.min(...dates));
-  const maxDate = new Date(Math.max(...dates));
-  const now = new Date();
-  const pastDates = parsedEvents.filter((e) => e.status === 'past').map((e) => e.dateObj);
-  const futureDates = parsedEvents.filter((e) => e.status !== 'past').map((e) => e.dateObj);
+  const startTimes = parsedEvents.map((event) => event.startDate.getTime());
+  const endTimes = parsedEvents.map((event) => event.endDate.getTime());
+  const minDate = new Date(Math.min(...startTimes));
+  const maxDate = new Date(Math.max(...endTimes));
 
-  let todayReference = now;
-  const anchorPast = parsedEvents.find((event) => event.title.toLowerCase().includes('video über die gremien'));
-  const anchorFuture = parsedEvents.find((event) => event.title.toLowerCase().includes('2. gsv'));
+  const currentEvent = parsedEvents.find((event) => event.status === 'current');
 
-  if(anchorPast && anchorFuture){
-    todayReference = new Date((anchorPast.dateObj.getTime() + anchorFuture.dateObj.getTime()) / 2);
-  } else if(now < minDate || now > maxDate){
-    if(pastDates.length && futureDates.length){
-      todayReference = new Date((pastDates[pastDates.length - 1].getTime() + futureDates[0].getTime()) / 2);
-    } else {
-      todayReference = minDate;
-    }
+  let referenceDate;
+
+  if(currentEvent){
+    referenceDate = currentEvent.midpoint;
+  } else if(today < minDate){
+    referenceDate = minDate;
+  } else if(today > maxDate){
+    referenceDate = maxDate;
+  } else {
+    referenceDate = today;
   }
 
   const range = Math.max(maxDate - minDate, 1);
-  const percent = Math.min(Math.max(((todayReference - minDate) / range) * 100, 0), 100);
+  const percent = Math.min(Math.max(((referenceDate - minDate) / range) * 100, 0), 100);
 
   trackPast.style.width = `${percent}%`;
   trackFuture.style.width = `${100 - percent}%`;
