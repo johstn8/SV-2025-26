@@ -166,6 +166,15 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+// Dummy form submission: clear form and show confirmation
+document.querySelectorAll('form').forEach((form) => {
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    form.reset();
+    alert('Danke! Dein Formular wurde abgeschickt.');
+  });
+});
+
 // Inaktivität: nach 40s zurück zur Startseite
 const idleRedirectDelay = 40000;
 let idleTimer = null;
