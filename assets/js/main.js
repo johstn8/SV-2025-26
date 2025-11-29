@@ -34,7 +34,7 @@ const timelineEvents = [
   { date: '2025-10-20', title: 'Video über die Gremien an unserer Schule', category: 'Transparenz', description: 'Kurzes Erklärvideo zu GSV, Schulkonferenz und Fachkonferenzen – damit klar ist, wo ihr mitsprechen könnt.' },
   { date: '2025-11-14', title: 'YOLO-Party & Kultur-Dinner', category: 'Event', description: 'Gemeinsam mit dem Stadtteilzentrum Kladow und Raneem Hachim für Vielfalt: Party, Kultur-Dinner und eure Playlist.' },
   { date: '2025-11-17', title: '1. Schulkonferenz', category: 'Schulkonferenz', description: 'Erfolgreicher Antrag: Protokolle sollen zeitnah veröffentlicht werden, damit alle informiert bleiben.' },
-  { date: '2025-11-28', title: 'Bestellung 2. Hygiene-Box', category: 'Hygiene', description: 'Wir haben die zweite Box bestellt, damit Hygieneartikel verlässlich an mehreren Standorten verfügbar sind.' },
+  { date: '2025-11-29', title: 'Bestellung 2. Hygiene-Box', category: 'Hygiene', description: 'Wir haben die zweite Box bestellt, damit Hygieneartikel verlässlich an mehreren Standorten verfügbar sind.' },
   { date: '2025-12-05', displayDate: 'Dezember', title: 'Hygiene-Artikel & 1. Schulkonferenz', category: 'Hygiene', description: 'Weitere Box bestellt, kostenlose Hygieneartikel aufgefüllt und unser Schulkonferenz-Antrag zur Veröffentlichung der Protokolle angenommen.' },
   { date: '2025-12-08', displayDate: 'Dezember', title: 'Upload LK Materialpool', category: 'LK', description: 'Materialien zur Leistungskurswahl plus Notenrechner – alles an einem Ort für eure Entscheidung.' },
   { date: '2025-12-12', displayDate: 'Dezember', title: 'Schachturnier', category: 'Event', description: 'Turnier für die 5.–7. Klassen – Taktik, Teamgeist und faire Partien kurz vor den Ferien.' },
@@ -76,6 +76,8 @@ if(eventsHost && scroller && trackPast && trackFuture && todayMarker){
   const dates = parsedEvents.map((event) => event.dateObj.getTime());
   const minDate = new Date(Math.min(...dates));
   const maxDate = new Date(Math.max(...dates));
+  const timelineRange = Math.max(maxDate - minDate, 1);
+  const eventPositions = parsedEvents.map((event) => ((event.dateObj - minDate) / timelineRange) * 100);
 
   let markerPercent = 0;
   if(now <= minDate){
@@ -83,15 +85,13 @@ if(eventsHost && scroller && trackPast && trackFuture && todayMarker){
   } else if(now >= maxDate){
     markerPercent = 100;
   } else {
-    const segmentCount = parsedEvents.length - 1;
-    const positions = parsedEvents.map((_, index) => (index / segmentCount) * 100);
     const futureIndex = parsedEvents.findIndex((event) => now <= event.dateObj);
     const prevIndex = Math.max(0, futureIndex - 1);
     const nextIndex = futureIndex === -1 ? parsedEvents.length - 1 : futureIndex;
     const prevEvent = parsedEvents[prevIndex];
     const nextEvent = parsedEvents[nextIndex];
-    const prevPos = positions[prevIndex];
-    const nextPos = positions[nextIndex];
+    const prevPos = eventPositions[prevIndex];
+    const nextPos = eventPositions[nextIndex];
 
     if(now.toDateString() === nextEvent.dateObj.toDateString()){
       markerPercent = nextPos;
